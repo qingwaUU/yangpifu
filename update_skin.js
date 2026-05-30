@@ -7,12 +7,12 @@ const fs = require('fs');
  */
 
 // 官方资源基础路径
-const BASE_URL = 'https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/';
-
+const BASE_URL = 'https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/';   
+https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import
 // 资源链接配置（这些 UUID 和 Hash 可能会随版本更新而变化，
 // 建议如果脚本失效，请重新抓包获取最新的 JSON 链接）
 const CONFIG = {
-    language: '46/46b0c95d-d055-444c-b4ae-936b24d1725e.3c84b.json',
+    language: '46b0c95d-d055-444c-b4ae-936b24d1725e.5496f.json',
     skinList: '62/62e2f78f-fa22-4fee-8294-d16593f17957.9b407.json',
     gameTopic: '10/10b93ebb-0229-4c5b-b28c-19f37ebe8bb8.78954.json',
     blockTopic: '16/16c7f440-2f64-40e1-b7e7-51d257e38e2e.049f8.json'
