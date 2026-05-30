@@ -1,0 +1,95 @@
+name: 自动更新皮肤数据
+
+
+
+on:
+
+  schedule:
+  
+    # 每天 UTC 时间 00:00 (北京时间 08:00) 运行一次
+    
+    - cron: '0 0 * * *'
+    
+  workflow_dispatch:
+  
+    # 允许手动触发
+    
+
+
+jobs:
+
+  update-skins:
+  
+    runs-on: ubuntu-latest
+    
+
+
+    steps:
+    
+      - name: 检出代码
+      
+        uses: actions/checkout@v3
+        
+
+
+      - name: 设置 Node.js
+      
+        uses: actions/setup-node@v3
+        
+        with:
+        
+          node-version: '18'
+          
+
+
+      - name: 安装依赖
+      
+        run: npm install axios
+        
+
+
+      - name: 运行抓取脚本
+      
+        run: node update_skin.js
+        
+
+
+      - name: 提交并推送更改
+      
+        run: |
+        
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git config --local user.name "github-actions[bot]"
+          
+          git add skins_orig.json
+          
+          git commit -m "自动更新皮肤数据: $(date +'%Y-%m-%d %H:%M:%S')" || echo "没有检测到更改"
+          
+          git push
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
