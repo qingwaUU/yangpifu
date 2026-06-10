@@ -141,12 +141,9 @@ const run = async () => {
         skins.sort((a, b) => a.id - b.id);
     }
 
-    // 5. 保存结果
-    skins._lastUpdate = new Date().toISOString();
-    
-    const output = { _lastUpdate: new Date().toISOString(), skins: skins };
-    
-    fs.writeFileSync('skins_orig.json', JSON.stringify(output, null, 2));
+    // 5. 保存结果（添加时间戳条目让每次提交都有变化）
+    skins.push({ _checkTime: new Date().toISOString() });
+    fs.writeFileSync('skins_orig.json', JSON.stringify(skins, null, 2));
 
     console.log(`抓取完成！共获取到 ${skins.length} 个皮肤。数据已保存至 skins_orig.json`);
 
