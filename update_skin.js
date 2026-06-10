@@ -143,7 +143,11 @@ const run = async () => {
 
     // 5. 保存结果
     skins._lastUpdate = new Date().toISOString();
-    fs.writeFileSync('skins_orig.json', JSON.stringify(skins, null, 2));
+    
+    const output = { _lastUpdate: new Date().toISOString(), skins: skins };
+    
+    fs.writeFileSync('skins_orig.json', JSON.stringify(output, null, 2));
+
     console.log(`抓取完成！共获取到 ${skins.length} 个皮肤。数据已保存至 skins_orig.json`);
 
     // 6. 同时保存纯名称映射（方便其他项目使用）
