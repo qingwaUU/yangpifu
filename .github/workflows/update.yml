@@ -61,8 +61,10 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
           git config --local user.name "github-actions[bot]"
+
+          echo "Last check: $(date +'%Y-%m-%d %H:%M:%S')" > last_update.txt
           
-          git add skins_orig.json
+          git add skins_orig.json last_update.txt
           
           git commit -m "自动更新皮肤数据: $(date +'%Y-%m-%d %H:%M:%S')" || echo "没有检测到更改"
           
